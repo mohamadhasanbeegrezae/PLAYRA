@@ -2,215 +2,267 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PLAYRA | پلی‌را</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PLAYRA | پلیرا</title>
 
 <style>
 *{box-sizing:border-box}
 body{
-margin:0;
-font-family:Tahoma,Arial;
-background:#080d18;
-color:white;
+ margin:0;
+ background:#080d18;
+ color:white;
+ font-family:Tahoma,Arial;
 }
 header{
-background:#111c2e;
-padding:20px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:1px solid #263653;
+ background:#111c2e;
+ padding:18px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #263957;
 }
 .logo{
-font-size:27px;
-font-weight:bold;
-color:#55a0ff;
+ font-size:25px;
+ font-weight:bold;
+ color:#62a5ff;
 }
-.vip{
-background:#e5ad38;
-color:#111;
-padding:10px 17px;
-border-radius:12px;
-font-weight:bold;
+button{
+ border:0;
+ border-radius:12px;
+ padding:13px 18px;
+ background:#2864e8;
+ color:white;
+ font-size:15px;
+ cursor:pointer;
 }
 .container{
-padding:18px;
-max-width:650px;
-margin:auto;
+ padding:18px;
+ max-width:750px;
+ margin:auto;
 }
 .welcome{
-background:linear-gradient(135deg,#164da1,#101b36);
-padding:25px;
-border-radius:18px;
-margin:20px 0;
+ background:linear-gradient(135deg,#142c53,#10182b);
+ padding:25px;
+ border-radius:20px;
+ margin-top:20px;
 }
-.welcome h2{margin-top:0}
-.section-title{
-font-size:20px;
-margin:25px 0 15px;
+.welcome h2{font-size:23px}
+.card{
+ background:#111c2e;
+ border:1px solid #243b60;
+ padding:18px;
+ border-radius:17px;
+ margin-top:15px;
 }
+.card h3{margin-top:0}
 .games{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:13px;
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
 }
 .game{
-background:#121e32;
-border:1px solid #263c5e;
-border-radius:17px;
-padding:22px 10px;
-text-align:center;
+ background:#14243d;
+ border:1px solid #29466e;
+ border-radius:16px;
+ padding:20px 10px;
+ text-align:center;
 }
-.game .icon{font-size:40px}
-.game h3{margin:12px 0}
-button{
-border:0;
-background:#2864e8;
-color:white;
-padding:12px;
-border-radius:10px;
-font-size:14px;
-width:100%;
-margin-top:10px;
+.game .icon{font-size:38px}
+.game button{
+ width:100%;
+ margin-top:12px;
 }
-button:active{opacity:.7}
-.info{
-background:#121e32;
-padding:18px;
-border-radius:15px;
-margin-top:20px;
+input{
+ width:100%;
+ padding:15px;
+ border-radius:12px;
+ border:1px solid #30476a;
+ background:#080f1c;
+ color:white;
+ margin:10px 0;
+ font-size:15px;
 }
-nav{
-position:fixed;
-bottom:0;
-width:100%;
-background:#111c2e;
-display:flex;
-justify-content:space-around;
-padding:15px 5px;
-border-top:1px solid #263653;
+.badge{
+ color:#80b7ff;
+ font-size:13px;
 }
-nav button{
-width:auto;
-background:transparent;
-font-size:13px;
+.nav{
+ display:flex;
+ justify-content:space-around;
+ background:#111c2e;
+ padding:16px 5px;
+ position:fixed;
+ bottom:0;
+ width:100%;
+ border-top:1px solid #263957;
 }
-main{padding-bottom:90px}
+.nav span{
+ font-size:13px;
+ text-align:center;
+ cursor:pointer;
+}
+#login{
+ position:fixed;
+ inset:0;
+ background:#080d18;
+ z-index:10;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+}
+.loginbox{
+ background:#111c2e;
+ border:1px solid #29466e;
+ border-radius:20px;
+ padding:25px;
+ width:100%;
+ max-width:400px;
+ text-align:center;
+}
+.hidden{display:none!important}
+.notice{
+ font-size:12px;
+ color:#9bb2d1;
+ line-height:2;
+}
 </style>
 </head>
 
 <body>
 
+<div id="login">
+ <div class="loginbox">
+  <div class="logo">PLAYRA 🎮</div>
+  <h2>به پلیرا خوش آمدی</h2>
+  <p>برای ورود یک نام نمایشی انتخاب کن</p>
+  <input id="username" placeholder="نام نمایشی">
+  <button onclick="login()" style="width:100%">ورود به پلیرا</button>
+  <p class="notice">از نام واقعی، شماره تلفن و اطلاعات شخصی در نام نمایشی استفاده نکن.</p>
+ </div>
+</div>
+
 <header>
-<div class="logo">PLAYRA 🎮</div>
-<div class="vip" onclick="showVIP()">⭐ VIP</div>
+ <div class="logo">PLAYRA</div>
+ <div class="badge">ONLINE GAMING</div>
 </header>
 
-<main class="container">
+<div class="container">
 
-<div class="welcome">
-<h2>به دنیای PLAYRA خوش آمدی!</h2>
-<p>بازی کن، دوست پیدا کن و لحظات هیجان‌انگیزی بساز.</p>
+ <section class="welcome">
+  <h2>سلام <span id="player">بازیکن</span> 👋</h2>
+  <p>آماده‌ای دوستان جدید پیدا کنی؟</p>
+  <span class="badge">دنیای بازی‌های آنلاین پلیرا</span>
+ </section>
+
+ <section class="card">
+  <h3>🎮 بازی‌های امروز</h3>
+  <p>بازی رایگان باقی‌مانده:</p>
+  <h2 id="remaining">۳ بازی</h2>
+  <p class="notice">سهمیه رایگان پس از استفاده، ۱۲ ساعت بعد دوباره شارژ می‌شود.</p>
+ </section>
+
+ <h3 style="margin-top:28px">بازی‌ها</h3>
+
+ <div class="games">
+
+  <div class="game">
+   <div class="icon">🃏</div>
+   <h3>حکم</h3>
+   <span class="badge">رایگان</span>
+   <button onclick="play('حکم')">ورود به بازی</button>
+  </div>
+
+  <div class="game">
+   <div class="icon">🎭</div>
+   <h3>مافیا</h3>
+   <span class="badge">ویژه VIP</span>
+   <button onclick="vip()">مشاهده VIP</button>
+  </div>
+
+  <div class="game">
+   <div class="icon">❌⭕</div>
+   <h3>دوز آنلاین</h3>
+   <span class="badge">رایگان</span>
+   <button onclick="play('دوز آنلاین')">ورود به بازی</button>
+  </div>
+
+  <div class="game">
+   <div class="icon">🧠</div>
+   <h3>حدس کلمه</h3>
+   <span class="badge">رایگان</span>
+   <button onclick="play('حدس کلمه')">ورود به بازی</button>
+  </div>
+
+ </div>
+
+ <section class="card">
+  <h3>👥 دوستان و بازیکنان</h3>
+  <p>به‌زودی امکان پیدا کردن بازیکنان و ساخت اتاق بازی فعال می‌شود.</p>
+ </section>
+
+ <section class="card">
+  <h3>⭐ اشتراک VIP</h3>
+  <h2>۱۵۰,۰۰۰ تومان</h2>
+  <p>اعتبار یک ماهه</p>
+  <button onclick="vip()">مشاهده اشتراک</button>
+ </section>
+
+ <section class="card">
+  <h3>💬 گفت‌وگو</h3>
+  <p>چت بازی و گفت‌وگوی بازیکنان</p>
+  <p class="notice">امکان چت پس از اتصال سرور فعال می‌شود. گزارش و مسدودسازی کاربران نیز باید فعال باشد.</p>
+ </section>
+
+ <section class="card">
+  <h3>⚙️ حساب کاربری</h3>
+  <p id="account">بازیکن پلیرا</p>
+  <button onclick="logout()">خروج از حساب</button>
+ </section>
+
 </div>
 
-<div class="info">
-<h3>🎁 بازی‌های رایگان</h3>
-<p id="quota">۳ بازی رایگان در اختیار داری.</p>
+<div class="nav">
+ <span onclick="location.reload()">🏠<br>خانه</span>
+ <span onclick="document.querySelector('.games').scrollIntoView()">🎮<br>بازی‌ها</span>
+ <span onclick="vip()">⭐<br>VIP</span>
+ <span onclick="document.querySelector('#account').scrollIntoView()">👤<br>حساب</span>
 </div>
-
-<h2 class="section-title">🎮 بازی‌ها</h2>
-
-<div class="games">
-
-<div class="game">
-<div class="icon">🃏</div>
-<h3>حکم</h3>
-<p>بازی گروهی حکم</p>
-<button onclick="play('حکم')">ورود به بازی</button>
-</div>
-
-<div class="game">
-<div class="icon">🕵️</div>
-<h3>مافیا</h3>
-<p>بازی گروهی مافیا</p>
-<button onclick="playVIP('مافیا')">ورود به بازی</button>
-</div>
-
-<div class="game">
-<div class="icon">♟️</div>
-<h3>شطرنج</h3>
-<p>رقابت فکری</p>
-<button onclick="play('شطرنج')">ورود به بازی</button>
-</div>
-
-<div class="game">
-<div class="icon">🎯</div>
-<h3>بازی دوستانه</h3>
-<p>رقابت با دوستان</p>
-<button onclick="play('بازی دوستانه')">ورود به بازی</button>
-</div>
-
-</div>
-
-<div class="info">
-<h3>💎 اشتراک VIP</h3>
-<p>دسترسی به امکانات ویژه PLAYRA</p>
-<p>قیمت اشتراک ماهانه: ۱۵۰ هزار تومان</p>
-<button onclick="showVIP()">خرید اشتراک VIP</button>
-</div>
-
-</main>
-
-<nav>
-<button onclick="alert('صفحه خانه')">🏠 خانه</button>
-<button onclick="alert('بخش بازی‌ها')">🎮 بازی‌ها</button>
-<button onclick="alert('بخش دوستان')">👥 دوستان</button>
-<button onclick="alert('بخش پروفایل')">👤 پروفایل</button>
-</nav>
 
 <script>
-let gamesUsed = Number(localStorage.getItem('gamesUsed') || 0);
-let resetTime = Number(localStorage.getItem('resetTime') || 0);
-
-function updateQuota(){
-if(gamesUsed >= 3 && Date.now() >= resetTime){
-gamesUsed = 0;
-resetTime = 0;
-localStorage.setItem('gamesUsed',0);
-localStorage.setItem('resetTime',0);
-}
-let remaining = Math.max(0,3-gamesUsed);
-document.getElementById('quota').innerText =
-remaining + ' بازی رایگان باقی مانده است.';
+function login(){
+ let name=document.getElementById('username').value.trim();
+ if(name.length<2){
+  alert('لطفاً یک نام نمایشی وارد کن');
+  return;
+ }
+ localStorage.setItem('playra_name',name);
+ showUser();
 }
 
-function play(name){
-if(gamesUsed >= 3){
-if(Date.now() < resetTime){
-alert('سهمیه رایگان شما تمام شده است. پس از ۱۲ ساعت دوباره فعال می‌شود.');
-return;
-}
-gamesUsed = 0;
-}
-gamesUsed++;
-if(gamesUsed === 3){
-resetTime = Date.now() + 12*60*60*1000;
-}
-localStorage.setItem('gamesUsed',gamesUsed);
-localStorage.setItem('resetTime',resetTime);
-updateQuota();
-alert('بازی '+name+' انتخاب شد. بخش آنلاین بازی در مرحله بعد ساخته می‌شود.');
+function showUser(){
+ let name=localStorage.getItem('playra_name');
+ if(name){
+  document.getElementById('player').innerText=name;
+  document.getElementById('account').innerText=name;
+  document.getElementById('login').classList.add('hidden');
+ }
 }
 
-function playVIP(name){
-alert('برای بازی '+name+' به اشتراک VIP نیاز داری.');
+function logout(){
+ localStorage.removeItem('playra_name');
+ location.reload();
 }
 
-function showVIP(){
-alert('اشتراک VIP ماهانه: ۱۵۰ هزار تومان');
+function play(game){
+ alert('انتخاب بازی '+game+' ثبت شد. اتصال به سرور آنلاین در مرحله بعد انجام می‌شود.');
 }
 
-updateQuota();
+function vip(){
+ alert('بخش اشتراک VIP پلیرا در مرحله بعد به درگاه پرداخت متصل می‌شود.');
+}
+
+showUser();
 </script>
 
 </body>
