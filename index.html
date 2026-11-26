@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLAYRA | پلی‌را</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Tahoma,Arial;
+background:#080d18;
+color:white;
+}
+header{
+background:#111c2e;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+border-bottom:1px solid #263653;
+}
+.logo{
+font-size:27px;
+font-weight:bold;
+color:#55a0ff;
+}
+.vip{
+background:#e5ad38;
+color:#111;
+padding:10px 17px;
+border-radius:12px;
+font-weight:bold;
+}
+.container{
+padding:18px;
+max-width:650px;
+margin:auto;
+}
+.welcome{
+background:linear-gradient(135deg,#164da1,#101b36);
+padding:25px;
+border-radius:18px;
+margin:20px 0;
+}
+.welcome h2{margin-top:0}
+.section-title{
+font-size:20px;
+margin:25px 0 15px;
+}
+.games{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:13px;
+}
+.game{
+background:#121e32;
+border:1px solid #263c5e;
+border-radius:17px;
+padding:22px 10px;
+text-align:center;
+}
+.game .icon{font-size:40px}
+.game h3{margin:12px 0}
+button{
+border:0;
+background:#2864e8;
+color:white;
+padding:12px;
+border-radius:10px;
+font-size:14px;
+width:100%;
+margin-top:10px;
+}
+button:active{opacity:.7}
+.info{
+background:#121e32;
+padding:18px;
+border-radius:15px;
+margin-top:20px;
+}
+nav{
+position:fixed;
+bottom:0;
+width:100%;
+background:#111c2e;
+display:flex;
+justify-content:space-around;
+padding:15px 5px;
+border-top:1px solid #263653;
+}
+nav button{
+width:auto;
+background:transparent;
+font-size:13px;
+}
+main{padding-bottom:90px}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PLAYRA 🎮</div>
+<div class="vip" onclick="showVIP()">⭐ VIP</div>
+</header>
+
+<main class="container">
+
+<div class="welcome">
+<h2>به دنیای PLAYRA خوش آمدی!</h2>
+<p>بازی کن، دوست پیدا کن و لحظات هیجان‌انگیزی بساز.</p>
+</div>
+
+<div class="info">
+<h3>🎁 بازی‌های رایگان</h3>
+<p id="quota">۳ بازی رایگان در اختیار داری.</p>
+</div>
+
+<h2 class="section-title">🎮 بازی‌ها</h2>
+
+<div class="games">
+
+<div class="game">
+<div class="icon">🃏</div>
+<h3>حکم</h3>
+<p>بازی گروهی حکم</p>
+<button onclick="play('حکم')">ورود به بازی</button>
+</div>
+
+<div class="game">
+<div class="icon">🕵️</div>
+<h3>مافیا</h3>
+<p>بازی گروهی مافیا</p>
+<button onclick="playVIP('مافیا')">ورود به بازی</button>
+</div>
+
+<div class="game">
+<div class="icon">♟️</div>
+<h3>شطرنج</h3>
+<p>رقابت فکری</p>
+<button onclick="play('شطرنج')">ورود به بازی</button>
+</div>
+
+<div class="game">
+<div class="icon">🎯</div>
+<h3>بازی دوستانه</h3>
+<p>رقابت با دوستان</p>
+<button onclick="play('بازی دوستانه')">ورود به بازی</button>
+</div>
+
+</div>
+
+<div class="info">
+<h3>💎 اشتراک VIP</h3>
+<p>دسترسی به امکانات ویژه PLAYRA</p>
+<p>قیمت اشتراک ماهانه: ۱۵۰ هزار تومان</p>
+<button onclick="showVIP()">خرید اشتراک VIP</button>
+</div>
+
+</main>
+
+<nav>
+<button onclick="alert('صفحه خانه')">🏠 خانه</button>
+<button onclick="alert('بخش بازی‌ها')">🎮 بازی‌ها</button>
+<button onclick="alert('بخش دوستان')">👥 دوستان</button>
+<button onclick="alert('بخش پروفایل')">👤 پروفایل</button>
+</nav>
+
+<script>
+let gamesUsed = Number(localStorage.getItem('gamesUsed') || 0);
+let resetTime = Number(localStorage.getItem('resetTime') || 0);
+
+function updateQuota(){
+if(gamesUsed >= 3 && Date.now() >= resetTime){
+gamesUsed = 0;
+resetTime = 0;
+localStorage.setItem('gamesUsed',0);
+localStorage.setItem('resetTime',0);
+}
+let remaining = Math.max(0,3-gamesUsed);
+document.getElementById('quota').innerText =
+remaining + ' بازی رایگان باقی مانده است.';
+}
+
+function play(name){
+if(gamesUsed >= 3){
+if(Date.now() < resetTime){
+alert('سهمیه رایگان شما تمام شده است. پس از ۱۲ ساعت دوباره فعال می‌شود.');
+return;
+}
+gamesUsed = 0;
+}
+gamesUsed++;
+if(gamesUsed === 3){
+resetTime = Date.now() + 12*60*60*1000;
+}
+localStorage.setItem('gamesUsed',gamesUsed);
+localStorage.setItem('resetTime',resetTime);
+updateQuota();
+alert('بازی '+name+' انتخاب شد. بخش آنلاین بازی در مرحله بعد ساخته می‌شود.');
+}
+
+function playVIP(name){
+alert('برای بازی '+name+' به اشتراک VIP نیاز داری.');
+}
+
+function showVIP(){
+alert('اشتراک VIP ماهانه: ۱۵۰ هزار تومان');
+}
+
+updateQuota();
+</script>
+
+</body>
+</html>
